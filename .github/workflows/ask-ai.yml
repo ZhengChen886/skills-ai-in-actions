@@ -16,3 +16,12 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           prompt: |
             Give me a programming joke.
+      - name: Display AI Response
+        env:
+          AI_RESPONSE: ${{ steps.ai-response.outputs.response }}
+        run: |
+          {
+            echo "## 🤖 AI Response"
+            echo ""
+            echo "$AI_RESPONSE"
+          } >> $GITHUB_STEP_SUMMARY
